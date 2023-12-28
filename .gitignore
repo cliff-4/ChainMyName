@@ -163,3 +163,5 @@ cython_debug/
 .vscode
 a.*
 b.*
+example-notebooks/
+tokens.json
