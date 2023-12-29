@@ -3,7 +3,7 @@ from transformers import pipeline
 import langchain
 
 # Your Hugging Face API token
-huggingface_token = local_tokens.hf_api_keys()["INIT"][1]
+huggingface_token = local_tokens.api_keys()["HF"]["INIT_READ"]
 
 # Initialize the model pipeline
 model_name = "gpt2"  # or any other suitable model
@@ -28,9 +28,3 @@ from transformers import pipeline
 print("Transformers library has been installed successfully!")
 
 
-# [Do this pls]
-# conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
-# # Anything above 2.10 is not supported on the GPU on Windows Native
-# python -m pip install "tensorflow<2.11"
-# # Verify the installation:
-# python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
