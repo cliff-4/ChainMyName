@@ -1,0 +1,211 @@
+What is NPM? A Beginner's Guide 
+AUTHOR
+undefined
+SITE NAME
+CareerFoundry
+DATE
+Mon Nov 28 2022
+CATEGORIES
+Web Design and HTML, Programming Languages, Web Development, Internet, Technology & Computing, Computing
+TEXT
+When thinking of web development and writing code, we often focus on our own code. Using others’ code is actually a big part of the picture, too. Why reinvent the wheel, you know?
+
+That’s where Nasty Pirate Macaw comes in—otherwise known as npm.
+
+In this article we’ll cover where to find others’ code (i.e. packages) you can use. We’ll look at how the npm package manager works, how to keep track of packages, and what makes a good one.
+
+You can click on any heading below to jump right to that section:
+
+1. What is npm?
+
+npm stands for Node Package Manager. It’s a library and registry for JavaScript software packages.
+
+npm also has command-line tools to help you install the different packages and manage their dependencies.
+
+npm is free and relied on by over 11 million developers worldwide. You could say it’s kind of a big deal. They’re open-source and have become the center of Javascript code sharing. There are more than a million packages available on npm.
+
+In short, npm is:
+
+an online repository for the publishing of open-source Node.js projects
+
+a command-line utility for interacting with said repository helping with installing packages and managing package versions and dependencies
+
+2. What is Node.js?
+
+Node.js is a runtime environment that allows you to run JavaScript on the backend.
+
+A runtime environment is like a small operating system. It provides all the functionality needed for a program to run. Node came on the scene because JavaScript used to only work in the web browser. This is because browsers contain an engine to translate JavaScript into code the machine understands.
+
+Originally the backend (i.e. data layer of an application) doesn’t have this engine. That’s where Node.js comes in. It acts as a JavaScript engine that translates your code, allowing it to be run on a physical machine.
+
+If you’d like to learn more about it, check out my beginner’s guide to Node.js.
+
+Okay, but how does that relate to npm? Basically, npm keeps track of all the packages (shared code) you’re using.
+
+3. Why use npm?
+
+It’s certainly possible to manage your project’s dependencies yourself. As your project grows, though, this can become a herculean task.
+
+This is where a package manager like npm comes in. npm solves this problem by handling dependency and package management for your project.
+
+You define all your project’s dependencies inside your package.json file. Anytime you or a team member needs to get started with your project, all they have to do is run npm install.
+
+This will immediately install all the necessary dependencies for your project. In the package.json file, you can also specify which versions your project depends upon. This is useful to prevent updates from these packages from breaking your project.
+
+4. What is a package.json?
+
+A package.json file is created by your package manager (in this case npm) and exists at the root of a project in JavaScript/Node. To generate a package.json file you can run npm init. You’ll then be asked to fill out some metadata for your project such as:
+
+Name – your project’s name
+
+Version – current version in major.minor.patch format (1.0.0, 1.2.3, etc.)
+
+Description – description of the project
+
+License – the license your project is under, so people know how they are allowed to use it. Full list of licenses on the Software License Data Exchange site.
+
+The package.json file is in JSON format and is used for managing the project’s dependencies, scripts, versions, etc. Here’s a simple example:
+
+{
+
+"name": "My cool project",
+
+"version": "1.0.0",
+
+"description": "",
+
+"main": "index.js",
+
+"directories": {
+
+"test": "test"
+
+},
+
+"scripts": {
+
+"test": "jest",
+
+},
+
+"license": "ISC"
+
+}
+
+npm scripts
+
+In the package.json file there is also a scripts property. This can be used to run command line tools that are installed within the project’s local context. Common scripts you might use are things like:
+
+npm test—to run your tests
+
+npm build—to build your project
+
+npm start—to run your project locally
+
+Of course, you are flexible to customize scripts that make sense for your specific project.
+
+Dependencies vs. devDependencies
+
+There are two properties for dependencies in a package.json file, dependencies and devDependencies. So what’s the difference?
+
+Dependencies are the list of modules/packages that are required for your project to run. These are installed using npm install to add the package to the dependencies list.
+
+devDependencies, short for development dependencies, are modules/packages that are NOT required for your project to run. These are often things that help the development process but aren’t part of the project themselves. For example, linters like eslint, testing, etc.
+
+Making sense of dependencies
+
+It’s good to understand the semantics of dependencies as various bugs or security issues can come up due to them. Let’s first take a look at an example of some dependencies:
+
+"dependencies": {
+
+"bcryptjs": "^2.4.3",
+
+"cors": "^2.8.5",
+
+"dotenv": "^6.1.0",
+
+"express": "4.16.4",
+
+},
+
+"devDependencies": {
+
+"eslint": "~4.19.1",
+
+"mocha": "^6.2.0",
+
+"prettier": "^1.19.1",
+
+}
+
+Semantic versioning
+
+The versions above are in the format MAJOR.MINOR.PATCH. So, what does this mean for you?
+
+A MAJOR version involves breaking changes—likely you will need to update the package in your project when a major version has changed.
+
+A MINOR version change is backwards compatible, meaning it should update without breaking things (well, one can hope)
+
+A PATCH version change is backwards compatible bug fixes, or other small fixes
+
+You’ll see there’s also some characters before the version in the package.json above. Let’s go over some of those:
+
+^ (caret) before a version allows patch and minor updates for versions 1.0.0 and above, patch updates for versions 0.X >=0.1.0, and no updates for versions 0.0.X.
+
+~ (tilde) allows patch-level changes if a minor version is specified. Allows minor-level changes if not.
+
+No symbol before the version means the version of the package must match exactly, and should not be updated
+
+You can have a look at ALL the possible version ranges on GitHub.
+
+5. npm install vs. npm ci
+
+To install a package or module to your project, you have two options: npm install and npm ci. When should you use each? This table should help:
+
+If you had trouble viewing that information in the table, here it is divided up for each installation option:
+
+npm install
+
+Will create a package-lock.json if there isn’t one already
+
+Upgrades to the latest version of a package with the ^ version sign
+
+Can install individual dependencies via npm install
+
+Updates existing node_modules
+
+Can write to an existing package-lock.json
+
+npm install -production optimal for production environment
+
+npm ci
+
+Must have an existing package-lock.json
+
+Will not update the package lock if the dependencies do not match, instead will exit in error
+
+Can only install entire project, not individual dependencies
+
+Always removes node_modules and starts fresh
+
+Will never write to package.json or any of the package-locks: installs are frozen
+
+6. What makes a good package?
+
+It’s easy to get shiny object syndrome when downloading packages. Before you smash that install command here are a few things to consider:
+
+Is the project still maintained? Look at the last time it was updated. The last thing you want is to make a package a core part of your project, only to realize it’s no longer maintained. This can lead to a security breach or bugs.
+
+How many weekly downloads? It doesn’t need to be a popularity contest, but if you’re using a package in a business setting, you want to make sure it’s reputable. More people using it means more eyes on the code means more chances the worst bugs have already been sorted out.
+
+How’s the documentation? When you get stuck, it’s really helpful if the package has good documentation, otherwise you’re shooting alone in the dark.
+
+Does it have a community? Check the package’s Github issues, are they active? It’s good to have somewhere to go for help if need be.
+
+Final thoughts
+
+We’ve covered what makes a good package, the basics of managing dependencies and what a package.json is. Of course, it’s always good to consider if using a third-party package is advantageous to writing the code yourself.
+
+That said, there’s some cool projects out there that are likely to save you a ton of time. Happy browsing!
+
+If you’d like to learn more about the world of web development, check out these articles:
