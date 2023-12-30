@@ -28,7 +28,7 @@ prompt_template = PromptTemplate(
 prompt = prompt_template.format(
   blog_txt = blog_txt,
   num_ques = 1,
-  ques_type = ["coding", "logical", "coding and logical"][0]
+  ques_type = ["coding", "logical", "coding and logical"][2]
 )
 
 # print(prompt)
