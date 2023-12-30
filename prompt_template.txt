@@ -1,0 +1,7 @@
+Answer the question based on the context below. If the question cannot be answered using the information provided, answer with "I don't know".
+
+Context: {blog_txt}
+
+Query: Generate {num_ques} {ques_type} questions based on the text in bullet point(s).
+
+Answer: 

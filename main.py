@@ -1,30 +1,35 @@
 import local_tokens
-from transformers import pipeline
-import langchain
-langchain.verbose = False
-import os
+from langchain.llms import OpenAI
+from langchain import PromptTemplate
 
-os.environ["TF_ENABLE_ONEDNN_OPTS"] = "0"
+oai_key = local_tokens.api_keys()["OAI"]["CMN"]
 
+# initializing the model
+openai = OpenAI(
+  model_name="text-davinci-003",
+  openai_api_key=oai_key
+)
 
-# Your Hugging Face API token
-huggingface_token = local_tokens.api_keys()["HF"]["INIT_READ"]
+with open("prompt_template.txt", "r") as f:
+  template = f.read()
 
-# Initialize the model pipeline
-model_name = "gpt2"  # or any other suitable model
-question_generator = pipeline('text-generation', model=model_name, token=huggingface_token)
+with open("sample_blogs/Do_Nots.txt", "r") as f: 
+  blog_txt = f.read()
 
-# Set up LangChain
-prompt = langchain.prompts.FixedPrompt("Generate logical and coding questions based on the following text:")
-postprocessor = langchain.postprocessors.QuestionPostprocessor()
+prompt_template = PromptTemplate(
+  input_variables=[
+    "blog_txt", 
+    "num_ques",
+    "ques_type"
+  ],
+  template=template
+)
 
-chain = langchain.prompts.langchain.chains.ComposableChain([prompt, question_generator, postprocessor])
+prompt = prompt_template.format(
+  blog_txt = blog_txt,
+  num_ques = 1,
+  ques_type = ["coding", "logical", "coding and logical"][0]
+)
 
-def generate_questions(text):
-  # Generate questions based on the input text
-  return chain.run(text)
-
-# Example usage
-input_text = "Your input paragraph here."
-questions = generate_questions(input_text)
-print(questions)
+# print(prompt)
+print(openai(prompt))
