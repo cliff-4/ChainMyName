@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>ChainMyName</title>
+
+{% endblock %}
+{% block body %}
+
+<div class="content">
+	<h1 style="text-align: center;">ChainMyName</h1>
+
+	<table>
+		<tr>
+			<th>File Name</th>
+			<th>#Questions</th>
+			<th style="width: fit-content;">Executed (YYYY-MM-DD)</th>
+			<th>Response</th>
+			<th>Time Taken</th>
+			<th>Action</th>
+		</tr>
+
+		{% for task in tasks %}
+			<tr>
+				<td>{{ task.content }}</td>
+				<td>{{ task.numques }}</td>
+				<td>{{ task.date_created.date().strftime('%d %b %Y, %I:%M%p') }}</td>
+
+				<td>
+					<ul class="outputrender">
+						{% for i in range(task.numques) %}
+							<li>{{ task.output.split('\n')[i] }}</li>
+						{% endfor %}
+					</ul>
+				</td>
+
+				<td>{{ task.timetaken }} s</td>
+				<td>
+					<a href="/delete/{{task.id}}">Delete</a>
+					<!-- <br>
+					<a href="">Update</a> -->
+				</td>
+			</tr>
+		{% endfor %}
+
+	</table>
+	
+	<br>
+
+	<!-- <form action="/" method="POST">
+		<input type="text" name="content" id="content">
+		<input type="submit" value="Add Task">
+	</form> -->
+	
+	<br>
+	<div class="formparent">
+		<form method="POST" enctype="multipart/form-data">
+			{{ form.hidden_tag() }}
+			<div class = "formcontents">Number of Questions {{ form.numques() }}</div>
+			<div class = "formcontents">{{ form.file() }}</div>
+			<div class = "formcontents">{{ form.submit() }}</div>
+		</form>
+	</div>
+
+</div>
+
+{% endblock %}
