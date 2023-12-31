@@ -5,7 +5,7 @@
 ```Own deployment instructions yet to be added```
 
 ## ~~Video~~ GIF Demonstration
-![Alt Text](https://github.com/cliff-4/ChainMyName/blob/main/Skille%20Task%20Demo%20GIF.gif)
+![Demo](https://github.com/cliff-4/ChainMyName/blob/main/Skille%20Task%20Demo%20GIF.gif)
 
 Key points
 - User has to provide BOTH text document and number of questions. 
