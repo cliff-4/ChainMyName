@@ -2,6 +2,6 @@ Answer the question based on the context below. If the question cannot be answer
 
 Context: {blog_txt}
 
-Query: Generate {num_ques} {ques_type} questions based on the text in bullet point(s).
+Query: Generate {num_ques} {ques_type} questions based on the text. Each question should be separated by a @ symbol.
 
 Answer: 
