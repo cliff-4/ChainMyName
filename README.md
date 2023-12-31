@@ -4,4 +4,4 @@
 
 ```Own deployment instructions yet to be added```
 
-![Alt Text](https://github.com/cliff-4/ChainMyName/blob/main/Skille%20Task%20Demo.mkv)
+![Alt Text](https://github.com/cliff-4/ChainMyName/blob/main/Skille%20Task%20Demo.gif)
