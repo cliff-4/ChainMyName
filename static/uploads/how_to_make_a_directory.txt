@@ -1,0 +1,24 @@
+Creating directories (mkdir command)
+Last Updated: 2023-03-24
+Use the mkdir command to create one or more directories specified by the Directory parameter.
+
+Each new directory contains the standard entries dot (.) and dot dot (..). You can specify the permissions for the new directories with the -m Mode flag.
+
+When you create a directory, it is created within the current, or working, directory unless you specify an absolute path name to another location in the file system.
+
+The following are examples of how to use the mkdir command:
+To create a new directory called Test in the current working directory with default permissions, type the following:
+mkdir Test
+
+To create a directory called Test with rwxr-xr-x permissions in a previously created /home/demo/sub1 directory, type the following:
+mkdir -m 755 /home/demo/sub1/Test
+
+To create a directory called Test with default permissions in the /home/demo/sub2 directory, type the following:
+mkdir -p /home/demo/sub2/Test
+
+The -p flag creates the /home, /home/demo, and /home/demo/sub2 directories if they do not already exist.
+See the mkdir command in the Commands Reference, Volume 3 for the complete syntax.
+
+
+
+source: https://www.ibm.com/docs/en/aix/7.1?topic=directories-creating-mkdir-command
