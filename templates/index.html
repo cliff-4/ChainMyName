@@ -14,7 +14,7 @@
 		<tr>
 			<th>File Name</th>
 			<th>#Questions</th>
-			<th style="width: fit-content;">Executed (YYYY-MM-DD)</th>
+			<th style="width: fit-content;">Executed</th>
 			<th>Response</th>
 			<th>Time Taken</th>
 			<th>Action</th>
@@ -53,7 +53,8 @@
 	</form> -->
 	
 	<br>
-	<div class="formparent">
+	<!-- <div style="align-items: center;"> -->
+	<div class="formbox">
 		<form method="POST" enctype="multipart/form-data">
 			{{ form.hidden_tag() }}
 			<div class = "formcontents">Number of Questions {{ form.numques() }}</div>
@@ -61,6 +62,7 @@
 			<div class = "formcontents">{{ form.submit() }}</div>
 		</form>
 	</div>
+	<!-- </div> -->
 
 </div>
 

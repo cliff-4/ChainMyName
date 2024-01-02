@@ -1,7 +1,7 @@
 body, html {
     margin: 0;
 	font-family: 'Times New Roman';
-    background-color: lightblue;
+    background-color: #F3F8FC;
 }
 
 .content {
@@ -10,7 +10,7 @@ body, html {
 }
 
 table, td, th {
-    border: 1px solid #aaa;
+    border: 1px solid #40494F55;
 }
 
 table {
@@ -20,6 +20,7 @@ table {
 
 th {
     height: 30px;
+    background-color: #8598BF;
 }
 
 td {
@@ -27,15 +28,35 @@ td {
     padding: 5px;
 }
 
+tr:nth-child(even) {
+    background-color: #D8E2F7;
+}
+
+/* tr:hover {background-color: #40494F55;} */
+
 .form {
     margin-top: 20px;
 }
 
-.formparent {
+.formbox {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* border:10px solid black; */
+    color: #F3F8FC;
+    background-color: #40494FCC;
+    border-radius:20px;
+    width: min-content;
 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.formbox :hover, .formbox :active {
+    border-radius:20px;
+    background-color: #40494F;
 }
 
 #content {
@@ -45,17 +66,30 @@ td {
 .formcontents {
     text-align-last: center;
     text-align: center;
-    border:1px solid black;
     padding: 10px;
     width: 90%;
-
+    /* border:1px solid black; */
 }
 
 .outputrender {
     list-style-type:none;
     margin-top: 10px;
     text-align: left;
-    /* border: 1px solid black; */
     padding: 5px;
     width: 95%;
 }
+
+a:link, a:visited {
+    background-color: #241C1D77;
+    color: #F3F8FC;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius:10px;
+}
+
+a:hover, a:active {
+    background-color: #241C1DAA;
+    border-radius:10px;
+  }
